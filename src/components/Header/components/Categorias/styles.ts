@@ -22,6 +22,7 @@ export const Container = styled.nav<{itensVisiveis: boolean}>`
     ul {
         position: absolute;
         background: #FFFFFF;  
+        z-index: 2;
     }
     li {
         padding: 24px 24px 16px;
