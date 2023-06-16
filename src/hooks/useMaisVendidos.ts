@@ -3,16 +3,8 @@ import livroLideranca from '../assets/livro_lideranca_em_design.png'
 import livroJavaScript from '../assets/livro_javascript_assertivo.png'
 import { LivroType } from '../types/LivroType';
 
-export default function useUltimosLancamentos(){
+export default function useMaisVendidos(){
      const livros: LivroType[] = [
-        {
-            id: 1,
-            titulo: 'Apache Kafka e Spring Boot',
-            descricao: 'Comunicação assíncrona entre microsserviços',
-            autor: 'Eduardo Felipe',
-            link_da_imagem: livroApache,
-            preco: 'R$ 32,99',
-        },
         {
             id: 2,
             titulo: 'Liderença em Design',
@@ -28,6 +20,14 @@ export default function useUltimosLancamentos(){
             autor: 'Gabriel Ramos',
             link_da_imagem: livroJavaScript,
             preco: 'R$ 22,75',
+        },
+        {
+            id: 1,
+            titulo: 'Apache Kafka e Spring Boot',
+            descricao: 'Comunicação assíncrona entre microsserviços',
+            autor: 'Eduardo Felipe',
+            link_da_imagem: livroApache,
+            preco: 'R$ 32,99',
         },
      ];
 

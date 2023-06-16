@@ -1,4 +1,4 @@
-export type UltimosLancamento = {
+export type LivroType = {
     id: number;
     titulo: string,
     descricao: string

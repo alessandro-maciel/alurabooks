@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import useUltimosLancamentos from '../../../../hooks/useUltimosLancamentos';
-import { UltimosLancamento } from '../../../../types/UltimosLancamento';
+import { useState } from 'react';
 import { 
     Titulo, 
     Livros, 
@@ -14,25 +12,24 @@ import {
     BotaoComprar,
     Container
 } from'./styles';
+import { LivroType } from '../../../../types/LivroType';
 import { AbBotao, AbCard } from 'alurabooks-ds-alessandro-maciel';
 import {ReactComponent as SacolaIcon} from '../../../../assets/sacola_icon.svg';
 import {ReactComponent as FavoritoIcon} from '../../../../assets/favorito_icon.svg';
 
-export default function Lancamentos(){
-    const [livroSelecionado, setLivroSelecionado] = useState<UltimosLancamento | null>(null);
-    const { lancamentos } = useUltimosLancamentos();
+interface Props {
+    titulo:string, 
+    livros: LivroType[],
+}
 
-    useEffect(() => {
-        if (!livroSelecionado) {
-            setLivroSelecionado(lancamentos[1]);
-        }
-    },[]);
+export default function SecaoLivros({ titulo, livros }: Props){
+    const [livroSelecionado, setLivroSelecionado] = useState(livros[1]);
 
-    const selecionarLivro = (livro: UltimosLancamento) => {
+    const selecionarLivro = (livro: LivroType) => {
         setLivroSelecionado(livro);
     }
 
-    const renderLivro = (livro: UltimosLancamento, emDestaque: boolean) => {
+    const renderLivro = (livro: LivroType, emDestaque: boolean) => {
         return (
             <Livro 
                 key={livro.id} 
@@ -45,10 +42,10 @@ export default function Lancamentos(){
 
     return (
         <>
-            <Titulo>ÚLTIMOS LANÇAMENTOS</Titulo>
+            <Titulo>{titulo}</Titulo>
             <Container>
                 <Livros>
-                    {lancamentos.map(livro => renderLivro(livro, livro.id === livroSelecionado?.id))}
+                    {livros.map(livro => renderLivro(livro, livro.id === livroSelecionado?.id))}
                 </Livros>
                 <AbCard>
                     <CardHeader>
