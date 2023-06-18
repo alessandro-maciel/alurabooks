@@ -12,10 +12,10 @@ import {
     BotaoComprar,
     Container
 } from'./styles';
-import { LivroType } from '../../../../types/LivroType';
+import { LivroType } from '../../../types/LivroType';
 import { AbBotao, AbCard } from 'alurabooks-ds-alessandro-maciel';
-import {ReactComponent as SacolaIcon} from '../../../../assets/sacola_icon.svg';
-import {ReactComponent as FavoritoIcon} from '../../../../assets/favorito_icon.svg';
+import {ReactComponent as SacolaIcon} from '../../../assets/icons/sacola_icon.svg';
+import {ReactComponent as FavoritoIcon} from '../../../assets/icons/favorito_icon.svg';
 
 interface Props {
     titulo:string, 

@@ -1,6 +1,6 @@
 import {ReactComponent as Logo} from '../../assets/logo.svg';
-import {ReactComponent as UserIcon} from '../../assets/user.svg';
-import Categorias from "./components/Categorias";
+import {ReactComponent as UserIcon} from '../../assets/icons/user.svg';
+import Categorias from "./Categorias";
 import {Container, HeaderContainer, HeaderLogo, Login} from './styles';
 
 export default function Header(){

@@ -1,7 +1,7 @@
-import Header from "./components/Header";
-import SecaoLivros from "./components/SecaoLivros";
-import useUltimosLancamentos from "../../hooks/useUltimosLancamentos";
+import Header from "./Header";
+import SecaoLivros from "./SecaoLivros";
 import useMaisVendidos from "../../hooks/useMaisVendidos";
+import useUltimosLancamentos from "../../hooks/useUltimosLancamentos";
 
 export default function Home(){
     const { livros: ultimosLancamentos } = useUltimosLancamentos();

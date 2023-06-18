@@ -1,6 +1,6 @@
-import livroApache from '../assets/livro_apache_kafka_e_spring_boot.png'
-import livroLideranca from '../assets/livro_lideranca_em_design.png'
-import livroJavaScript from '../assets/livro_javascript_assertivo.png'
+import livroApache from '../assets/livros/livro_apache_kafka_e_spring_boot.png'
+import livroLideranca from '../assets/livros/livro_lideranca_em_design.png'
+import livroJavaScript from '../assets/livros/livro_javascript_assertivo.png'
 import { LivroType } from '../types/LivroType';
 
 export default function useMaisVendidos(){

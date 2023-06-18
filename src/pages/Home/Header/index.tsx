@@ -1,7 +1,7 @@
 
-import ilustracao_a_esquerda from '../../../../assets/ilustracao_a_esquerda.svg';
-import ilustracao_a_direita  from '../../../../assets/ilustracao_a_direita.svg';
-import {ReactComponent as SearchIcon} from '../../../../assets/search-icon.svg';
+import ilustracao_a_esquerda from '../../../assets/header/ilustracao_a_esquerda.svg';
+import ilustracao_a_direita  from '../../../assets/header/ilustracao_a_direita.svg';
+import {ReactComponent as SearchIcon} from '../../../assets/icons/search-icon.svg';
 import {OndeComecar, Ilustracoes , Container, Input} from './styles';
 
 export default function Header(){

@@ -1,5 +1,5 @@
 import { Container, Input, Textos } from "./styles";
-import {ReactComponent as MessageIcon} from '../../../assets/message-icon.svg';
+import {ReactComponent as MessageIcon} from '../../../assets/icons/message-icon.svg';
 
 export default function Novidades(){
     return (

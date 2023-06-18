@@ -1,4 +1,4 @@
-import useCategorias from "../../../../hooks/useCategorias";
+import useCategorias from "../../../hooks/useCategorias";
 import { Container } from './styles';
 import { useState } from "react";
 
