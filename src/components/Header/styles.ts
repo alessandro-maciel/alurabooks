@@ -31,6 +31,12 @@ export const HeaderLogo = styled.div`
     }
 `
 
+export const LoginCadastro = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+`
+
 export const Login = styled.div`
     display: flex;
     flex-direction: row;
