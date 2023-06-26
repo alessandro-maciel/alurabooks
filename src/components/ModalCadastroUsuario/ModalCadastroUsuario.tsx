@@ -3,8 +3,14 @@ import { AbBotao, AbCampoTexto, AbModal } from "alurabooks-ds-alessandro-maciel"
 import imagem from './assets/login.png';
 import { useState } from "react";
 import { Container, Form, Footer, ComplementoCep } from "./styles";
+import axios from "axios";
 
-export default function ModalCadastroUsuario(){
+interface ModalProps {
+    visivel: boolean,
+    aoFechar: () => void,
+}
+
+export default function ModalCadastroUsuario({visivel, aoFechar}: ModalProps){
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [endereco, setEndereco] = useState('');
@@ -13,17 +19,54 @@ export default function ModalCadastroUsuario(){
     const [senha, setSenha] = useState('');
     const [confirmaSenha, setConfirmaSenha] = useState('');
 
+    const limparFormulario = () => {
+        setNome('');
+        setEmail('');
+        setEndereco('');
+        setComplemento('');
+        setCep('');
+        setSenha('');
+        setConfirmaSenha('');
+    }
+
+    const cadastrarUsuario = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+        const cliente = {
+            nome,
+            email,
+            endereco,
+            complemento,
+            cep,
+            senha,
+        }
+
+        axios.post('http://localhost:8000/public/registrar', cliente)
+            .then(() => {
+                alert('usuário cadastrado com sucesso');
+                limparFormulario();
+                aoFechar();
+            })
+            .catch(() => {
+                alert('Algo deu errado');
+            });
+    }
+
     return (
         <AbModal 
             titulo="CADASTRO"
-            visivel={true}
+            visivel={visivel}
+            aoFecharModal={() => {
+                limparFormulario();
+                aoFechar();
+            }}
         >
             <Container>
                 <figure>
                     <img src={imagem} alt="Monitor com uma fechadura e uma pessoa com uma chave logo ao lado" />
                 </figure>
                 
-                <Form>
+                <Form onSubmit={cadastrarUsuario}>
                     <AbCampoTexto
                         value={nome}
                         label="Nome"
