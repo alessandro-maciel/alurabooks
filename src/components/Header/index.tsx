@@ -4,9 +4,11 @@ import Categorias from "./Categorias";
 import {Container, HeaderContainer, HeaderLogo, Login, LoginCadastro} from './styles';
 import ModalCadastroUsuario from '../ModalCadastroUsuario/ModalCadastroUsuario';
 import { useState } from 'react';
+import ModalLoginUsuario from '../ModalLoginUsuario/ModalLoginUsuario';
 
 export default function Header(){
     const [modalCadastroVisivel, setModalCadastroVisivel] = useState(false);
+    const [modalLoginVisivel, setModalLoginVisivel] = useState(false);
 
     return (
         <Container>
@@ -18,10 +20,16 @@ export default function Header(){
                 <Categorias />
             </HeaderContainer>
             <LoginCadastro>
-                <Login>
+                <Login
+                    onClick={() => setModalLoginVisivel(true)}
+                >
                     <UserIcon width={32} height={32}/>
                     <p>Login</p>
                 </Login>
+                <ModalLoginUsuario 
+                      visivel={modalLoginVisivel}
+                      aoFechar={() => setModalLoginVisivel(false)}
+                />
                 <Login
                     onClick={() => setModalCadastroVisivel(true)}
                 >

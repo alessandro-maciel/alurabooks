@@ -40,6 +40,7 @@ export const LoginCadastro = styled.div`
 export const Login = styled.div`
     display: flex;
     flex-direction: row;
+    cursor: pointer;
     p {
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
