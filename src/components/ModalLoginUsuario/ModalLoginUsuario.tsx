@@ -8,9 +8,10 @@ import axios from "axios";
 interface ModalProps {
     visivel: boolean,
     aoFechar: () => void,
+    aoFazerLogin: () => void,
 }
 
-export default function ModalLoginUsuario({visivel, aoFechar}: ModalProps){
+export default function ModalLoginUsuario({visivel, aoFechar, aoFazerLogin}: ModalProps){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
@@ -32,7 +33,7 @@ export default function ModalLoginUsuario({visivel, aoFechar}: ModalProps){
                 sessionStorage.setItem('token', response.data.access_token);
                 
                 limparFormulario();
-                aoFechar();
+                aoFazerLogin();
             })
             .catch((error) => {
                 if (error?.response?.data?.message) {

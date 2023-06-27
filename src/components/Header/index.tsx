@@ -5,10 +5,19 @@ import {Container, HeaderContainer, HeaderLogo, Login, LoginCadastro} from './st
 import ModalCadastroUsuario from '../ModalCadastroUsuario/ModalCadastroUsuario';
 import { useState } from 'react';
 import ModalLoginUsuario from '../ModalLoginUsuario/ModalLoginUsuario';
+import { Link } from 'react-router-dom';
 
 export default function Header(){
     const [modalCadastroVisivel, setModalCadastroVisivel] = useState(false);
     const [modalLoginVisivel, setModalLoginVisivel] = useState(false);
+
+    const token = sessionStorage.getItem('token');
+    const [usuarioEstaLogado, setUsuarioEstaLogado] = useState(token != null);
+
+    const aoFazerLogin = () => {
+        setModalLoginVisivel(true);
+        setUsuarioEstaLogado(true);
+    }
 
     return (
         <Container>
@@ -19,28 +28,41 @@ export default function Header(){
                 </HeaderLogo>
                 <Categorias />
             </HeaderContainer>
-            <LoginCadastro>
-                <Login
-                    onClick={() => setModalLoginVisivel(true)}
-                >
-                    <UserIcon width={32} height={32}/>
-                    <p>Login</p>
-                </Login>
-                <ModalLoginUsuario 
-                      visivel={modalLoginVisivel}
-                      aoFechar={() => setModalLoginVisivel(false)}
-                />
-                <Login
-                    onClick={() => setModalCadastroVisivel(true)}
-                >
-                    <UserIcon width={32} height={32}/>
-                    <p>Cadastrar-se</p>
-                </Login>
-                <ModalCadastroUsuario 
-                    visivel={modalCadastroVisivel}
-                    aoFechar={() => setModalCadastroVisivel(false)}
-                />
-            </LoginCadastro>
+            {!usuarioEstaLogado &&
+                <LoginCadastro>
+                    <Login
+                        onClick={() => setModalLoginVisivel(true)}
+                    >
+                        <UserIcon width={32} height={32}/>
+                        <p>Login</p>
+                    </Login>
+                    <ModalLoginUsuario 
+                        visivel={modalLoginVisivel}
+                        aoFechar={() => setModalLoginVisivel(false)}
+                        aoFazerLogin={aoFazerLogin}
+                    />
+                    <Login
+                        onClick={() => setModalCadastroVisivel(true)}
+                    >
+                        <UserIcon width={32} height={32}/>
+                        <p>Cadastrar-se</p>
+                    </Login>
+                    <ModalCadastroUsuario 
+                        visivel={modalCadastroVisivel}
+                        aoFechar={() => setModalCadastroVisivel(false)}
+                    />
+                </LoginCadastro>
+            }
+            {usuarioEstaLogado &&
+                <LoginCadastro>
+                    <Link to="/minha-conta/pedidos " >
+                        <Login>
+                            <UserIcon width={32} height={32}/>
+                            <p>Minha conta</p>
+                        </Login>
+                    </Link>
+                </LoginCadastro>
+            }
         </Container>
     );
 }
