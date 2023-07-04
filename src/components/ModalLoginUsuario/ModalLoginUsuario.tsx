@@ -3,7 +3,7 @@ import { AbBotao, AbCampoTexto, AbModal } from "alurabooks-ds-alessandro-maciel"
 import imagem from './assets/login.png';
 import { useState } from "react";
 import { Container, Form, Footer, EsqueciSenha, Registro, TextoCriarConta } from "./styles";
-import axios from "axios";
+import http from "../../http";
 
 interface ModalProps {
     visivel: boolean,
@@ -28,7 +28,7 @@ export default function ModalLoginUsuario({visivel, aoFechar, aoFazerLogin}: Mod
             senha,
         }
 
-        axios.post('http://localhost:8000/public/login', usuario)
+        http.post('/public/login', usuario)
             .then((response) => {
                 sessionStorage.setItem('token', response.data.access_token);
                 

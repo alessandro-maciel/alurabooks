@@ -3,7 +3,7 @@ import { AbBotao, AbCampoTexto, AbModal } from "alurabooks-ds-alessandro-maciel"
 import imagem from './assets/login.png';
 import { useState } from "react";
 import { Container, Form, Footer, ComplementoCep } from "./styles";
-import axios from "axios";
+import http from "../../http";
 
 interface ModalProps {
     visivel: boolean,
@@ -41,7 +41,7 @@ export default function ModalCadastroUsuario({visivel, aoFechar}: ModalProps){
             senha,
         }
 
-        axios.post('http://localhost:8000/public/registrar', cliente)
+        http.post('/public/registrar', cliente)
             .then(() => {
                 alert('usuário cadastrado com sucesso');
                 limparFormulario();
