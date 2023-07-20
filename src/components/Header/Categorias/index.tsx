@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCategorias from "../../../hooks/useCategorias";
 import { Container } from './styles';
 import { useState } from "react";
@@ -14,9 +15,11 @@ export default function Categorias(){
         >
             <label>CATEGORIAS</label>
             <ul>
-                {itensVisiveis && categorias.map((categoria, index) => {
+                {itensVisiveis && categorias.map((categoria) => {
                     return (
-                        <li key={index}>{categoria}</li>
+                        <li key={categoria.id}>
+                            <Link style={{textDecoration: 'none'}} to={`/categorias/${categoria.slug}`}>{categoria.nome}</Link>
+                        </li>
                     );
                 })}
             </ul>
