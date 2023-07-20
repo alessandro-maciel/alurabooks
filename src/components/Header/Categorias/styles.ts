@@ -31,12 +31,16 @@ export const Container = styled.nav<{itensVisiveis: boolean}>`
         -webkit-text-fill-color: transparent;
         background-clip: text;
         cursor: pointer;
-        text-decoration: none;
         &:hover {
             background: linear-gradient(97.54deg, #002F52 35.49%, #326589 165.37%);
             -webkit-text-fill-color: #FFFFFF;
         }
+        a {
+            text-decoration: none;
+            &:visited {
+                background: linear-gradient(97.54deg, #002F52 35.49%, #326589 165.37%);
+                -webkit-text-fill-color: #FFFFFF;
+            }
+        }
     }
 `
-
-export const LinkStyled = styled.link
