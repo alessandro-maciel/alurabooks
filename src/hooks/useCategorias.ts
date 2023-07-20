@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
 import http from "../http";
 import CategoriaType from "../types/CategoriaType";
+import { useQuery } from "react-query";
 
 export default function useCategorias() {
-    const [categorias, setCategorias] = useState<CategoriaType[]>([]);
+    const { data: categorias } = useQuery('categorias', () => buscarCategorias());
 
-    useEffect(() => {
-        http.get<CategoriaType[]>('/categorias')
-            .then(response => setCategorias(response.data))
-            .catch(error => console.log(error))
-    },[]);
+    const buscarCategorias = async () => {
+      const categorias = await http.get<CategoriaType[]>('/categorias');
+
+      return categorias.data;
+    }
 
     return { categorias };
 }

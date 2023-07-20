@@ -15,7 +15,7 @@ export default function Categorias(){
         >
             <label>CATEGORIAS</label>
             <ul>
-                {itensVisiveis && categorias.map((categoria) => {
+                {itensVisiveis && categorias?.map((categoria) => {
                     return (
                         <li key={categoria.id}>
                             <Link style={{textDecoration: 'none'}} to={`/categorias/${categoria.slug}`}>{categoria.nome}</Link>
